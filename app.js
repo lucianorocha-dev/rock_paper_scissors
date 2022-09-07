@@ -20,60 +20,54 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection === "paper" && computerSelection === "scissors") ||
     (playerSelection === "scissors" && computerSelection === "rock")
   ) {
-    return `You lose. ${
-      computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
-    } beats ${
-      playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
-    }.`;
+    return "compWin";
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
-    return `You win! ${
-      playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
-    } beats ${
-      computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
-    }`;
+    return "playerWin";
   } else if (
     playerSelection === computerSelection ||
     playerSelection === computerSelection ||
     playerSelection === computerSelection
   ) {
-    return "Tie!";
+    return "tie";
+  } else {
+    console.log("Wrong input.");
   }
 }
 
-const playerSelection = "Rock".toLowerCase();
+const playerSelection = prompt("Please enter your choice: ").toLowerCase();
 const computerSelection = getComputerChoice();
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection));
 
-// function playRound(playerSelection, computerSelection) {
-//     if (playerSelection === "rock" && computerSelection === "Paper") {
-//       return `You lose. ${computerSelection} beats Rock.`;
-//     } else if (playerSelection === "rock" && computerSelection === "Scissors") {
-//       return `You win! Rock beats ${computerSelection}`;
-//     } else if (playerSelection === "rock" && computerSelection === "Rock") {
-//       return "Tie!";
-//     } else if (playerSelection === "paper" && computerSelection === "Rock") {
-//       return `You win! Paper beats ${computerSelection}`;
-//     } else if (playerSelection === "paper" && computerSelection === "Paper") {
-//       return "Tie!";
-//     } else if (playerSelection === "paper" && computerSelection === "Scissors") {
-//       return `You lose. ${computerSelection} beats Paper.`;
-//     } else if (playerSelection === "scissors" && computerSelection === "Rock") {
-//       return `You lose. ${computerSelection} beats Scissors.`;
-//     } else if (playerSelection === "scissors" && computerSelection === "Paper") {
-//       return `You win! Scissors beats ${computerSelection}`;
-//     } else if (
-//       playerSelection === "scissors" &&
-//       computerSelection === "Scissors"
-//     ) {
-//       return "Tie!";
-//     }
-//   }
+// Call the playRound function to play 5 rounds and keep score
 
-//   const playerSelection = "rocK";
-//   const computerSelection = getComputerChoice();
-//   console.log(playRound(playerSelection, computerSelection));
+let playerScore = 0;
+let computerScore = 0;
+
+function game() {
+  let roundResult = playRound(playerSelection, computerSelection);
+  if (roundResult === "compWin") {
+    console.log(
+      `You lose. ${
+        computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
+      } beats ${
+        playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
+      }.`
+    );
+    return computerScore++;
+  } else if (roundResult === "playerWin") {
+    console.log(
+      `You win! ${
+        playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
+      } beats ${
+        computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
+      }`
+    );
+    return playerScore++;
+  } else if (roundResult === "tie") {
+    console.log("Tie!");
+  }
+}
+game();
