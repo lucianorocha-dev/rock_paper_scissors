@@ -16,6 +16,11 @@ function getComputerChoice() {
 let playerScore = 0;
 let computerScore = 0;
 
+// Capitalize when showing Rock, Paper, Scissors. Makes the cose cleaner.
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 // Play a single round of the game, comparing the player selection against the computer, announcing the winner or loser of the round.
 function playRound(playerSelection, computerSelection) {
   if (
@@ -25,11 +30,9 @@ function playRound(playerSelection, computerSelection) {
   ) {
     computerScore++;
     console.log(
-      `You lose. ${
-        computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
-      } beats ${
-        playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
-      }.`
+      `You lose this round. ${capitalize(computerSelection)} beats ${capitalize(
+        playerSelection
+      )}.`
     );
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
@@ -38,11 +41,9 @@ function playRound(playerSelection, computerSelection) {
   ) {
     playerScore++;
     console.log(
-      `You win! ${
-        playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
-      } beats ${
-        computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
-      }`
+      `You win this round! ${capitalize(playerSelection)} beats ${capitalize(
+        computerSelection
+      )}`
     );
   } else if (
     playerSelection === computerSelection ||
@@ -63,16 +64,8 @@ for (let i = 0; i < 5; i++) {
 
   const playerSelection = prompt("Please enter your choice: ").toLowerCase();
   const computerSelection = getComputerChoice();
-  console.log(
-    `Computer chose ${
-      computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
-    }`
-  );
-  console.log(
-    `Player chose ${
-      playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
-    }`
-  );
+  console.log(`Computer chose ${capitalize(computerSelection)}`);
+  console.log(`Player chose ${capitalize(playerSelection)}`);
 
   function game() {
     playRound(playerSelection, computerSelection);
