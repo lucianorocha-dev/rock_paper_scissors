@@ -43,7 +43,7 @@ function playRound(playerSelection, computerSelection) {
     console.log(
       `You win this round! ${capitalize(playerSelection)} beats ${capitalize(
         computerSelection
-      )}`
+      )}.`
     );
   } else if (
     playerSelection === computerSelection ||
