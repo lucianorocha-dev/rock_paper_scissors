@@ -16,7 +16,7 @@ function getComputerChoice() {
 let playerScore = 0;
 let computerScore = 0;
 
-// Capitalize when showing Rock, Paper, Scissors. Makes the cose cleaner.
+// Capitalize when showing Rock, Paper, Scissors. Makes the code cleaner.
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
